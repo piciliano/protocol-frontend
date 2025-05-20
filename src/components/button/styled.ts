@@ -13,8 +13,8 @@ export const Button = styled.button<ButtonProps>`
   cursor: pointer;
   transition: all 0.3s ease;
 
-  ${({ variant = "primary", theme }) => {
-    switch (variant) {
+  ${({ $variant = "primary", theme }) => {
+    switch ($variant) {
       case "secondary":
         return css`
           background-color: ${theme.colors.button.secondary};

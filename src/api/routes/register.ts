@@ -1,6 +1,5 @@
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
 import apiClient from "../apiConfig/apiClient";
-import { useNavigate } from "react-router-dom";
 
 type RegisterData = {
   name: string;
@@ -31,13 +30,9 @@ export const useRegister = (): UseMutationResult<
   RegisterData,
   unknown
 > => {
-  const navigate = useNavigate();
-
   return useMutation({
     mutationFn: RegisterUser,
-    onSuccess: () => {
-      navigate("/login");
-    },
+
     onError: (error) => {
       console.error("Erro no registro:", error);
     },

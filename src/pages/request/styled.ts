@@ -12,7 +12,7 @@ export const RequestContainer = styled.div`
   margin-bottom: 2rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: 1rem;
+    padding: 0rem;
     border-radius: 0;
     margin-top: 0;
   }

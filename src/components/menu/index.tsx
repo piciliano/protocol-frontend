@@ -58,7 +58,7 @@ const Menu = ({
           </S.NavLinkItem>
         )}
 
-        {location.pathname !== "/request" && (
+        {location.pathname === "/" && (
           <S.ScrollLinkItem
             $isDrawer={$isDrawer}
             to="about"

@@ -62,15 +62,15 @@ export const Protocol = styled.span`
   color: ${({ theme }) => theme.colors.text.secondary};
 `;
 
-export const Status = styled.span<{ status: string }>`
+export const Status = styled.span<{ $status: string }>`
   padding: 0.25rem 0.75rem;
   border-radius: 12px;
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: none;
 
-  background-color: ${({ status, theme }) => {
-    switch (status.toLowerCase()) {
+  background-color: ${({ $status, theme }) => {
+    switch ($status.toLowerCase()) {
       case "pendente":
         return theme.colors.feedback.warning;
       case "em_andamento":
@@ -84,8 +84,8 @@ export const Status = styled.span<{ status: string }>`
     }
   }};
 
-  color: ${({ status, theme }) => {
-    switch (status.toLowerCase()) {
+  color: ${({ $status, theme }) => {
+    switch ($status.toLowerCase()) {
       case "pendente":
         return theme.colors.text.primary;
       default:

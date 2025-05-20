@@ -1,10 +1,25 @@
-import { CardHeader, CardMedia, CardContent, Typography } from "@mui/material";
+import { useState } from "react";
+import {
+  CardHeader,
+  CardContent,
+  Typography,
+  Dialog,
+  DialogContent,
+  IconButton,
+} from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 import { StyledCard, AddressBox } from "./styled";
 import {
   Request,
   RequestStatus,
   RequestStatusLabels,
 } from "../../api/routes/getRequest";
+import theme from "../../styles/theme";
+import ExpandableText from "../expandedText";
+import "swiper/swiper-bundle.css";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, A11y } from "swiper/modules";
 
 const statusColors: Record<RequestStatus, string> = {
   [RequestStatus.PENDENTE]: "#FF9800",
@@ -25,21 +40,60 @@ const InfoCard = ({
   neighborhood,
   createdAt,
   secondary,
+  protocol,
 }: Request) => {
   const colorStatus = statusColors[status] || "#9E9E9E";
 
+  const [open, setOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  const handleOpen = (url: string) => {
+    setSelectedImage(url);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    setSelectedImage(null);
+  };
+
   return (
     <StyledCard $secondary={secondary}>
-      <CardMedia
-        component="img"
-        height={secondary ? "150" : "220"}
-        image={photos?.[0]?.url || "https://via.placeholder.com/400x200"}
-        alt={`${name} image`}
-        sx={{
-          objectFit: "cover",
+      <Swiper
+        modules={[Navigation, Pagination, A11y]}
+        navigation
+        pagination={{ clickable: true }}
+        spaceBetween={10}
+        slidesPerView={1}
+        style={{
+          width: "100%",
+          height: secondary ? 150 : 220,
           borderBottom: "1px solid #eee",
+          borderRadius: "4px 4px 0 0",
+          overflow: "hidden",
         }}
-      />
+      >
+        {(photos && photos.length > 0
+          ? photos
+          : [{ url: "https://via.placeholder.com/400x200" }]
+        ).map((photo, index) => (
+          <SwiperSlide key={index}>
+            <img
+              src={photo.url}
+              alt={`${name} image ${index + 1}`}
+              style={{
+                width: "100%",
+                height: secondary ? 150 : 220,
+                objectFit: "cover",
+                borderRadius: "4px 4px 0 0",
+                cursor: "pointer",
+              }}
+              onClick={() => handleOpen(photo.url)}
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+
       <CardHeader
         title={name}
         titleTypographyProps={{
@@ -53,20 +107,10 @@ const InfoCard = ({
       />
       <CardContent
         style={{
-          padding: secondary ? "0px" : "",
+          padding: secondary ? "0px" : undefined,
         }}
       >
-        <Typography
-          variant="body1"
-          color="text.secondary"
-          sx={{
-            marginBottom: 2,
-            lineHeight: 1.6,
-            paddingLeft: secondary ? "1.2rem" : "",
-          }}
-        >
-          {description}
-        </Typography>
+        <ExpandableText description={description} secondary={secondary} />
 
         <AddressBox $secondary={secondary} statuscolor={colorStatus}>
           <Typography
@@ -81,7 +125,7 @@ const InfoCard = ({
           </Typography>
           <div
             style={{
-              display: secondary ? "" : "flex",
+              display: secondary ? undefined : "flex",
               justifyContent: "space-between",
             }}
           >
@@ -116,8 +160,51 @@ const InfoCard = ({
               {RequestStatusLabels[status]}
             </span>
           </Typography>
+          {secondary ? (
+            <Typography variant="body2" sx={{ marginTop: 1 }}>
+              <span
+                style={{
+                  display: "inline-block",
+                  backgroundColor: "#f0f0f0",
+                  color: theme.colors.text.secondary,
+                  padding: "6px 12px",
+                  borderRadius: "10px",
+                  fontWeight: 600,
+                  marginTop: "8px",
+                  border: "1px solid #ccc",
+                }}
+              >
+                # {protocol}
+              </span>
+            </Typography>
+          ) : null}
         </AddressBox>
       </CardContent>
+
+      <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
+        <DialogContent sx={{ position: "relative", padding: 0 }}>
+          <IconButton
+            onClick={handleClose}
+            sx={{
+              position: "absolute",
+              top: 8,
+              right: 8,
+              color: "white",
+              zIndex: 1,
+            }}
+            aria-label="close"
+          >
+            <CloseIcon />
+          </IconButton>
+          {selectedImage && (
+            <img
+              src={selectedImage}
+              alt="Imagem ampliada"
+              style={{ width: "100%", height: "auto", display: "block" }}
+            />
+          )}
+        </DialogContent>
+      </Dialog>
     </StyledCard>
   );
 };

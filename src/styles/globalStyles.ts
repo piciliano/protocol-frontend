@@ -44,6 +44,11 @@ const GlobalStyles = createGlobalStyle`
     border: none;
     cursor: pointer;
   }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: #FFFF; 
+  }
 `;
 
 export default GlobalStyles;

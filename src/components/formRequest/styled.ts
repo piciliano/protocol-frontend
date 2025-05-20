@@ -9,7 +9,8 @@ export const FormContainer = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.border};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: 1.5rem;
+    padding: 1rem;
+    border: none;
   }
 `;
 

@@ -25,6 +25,7 @@ declare module "styled-components" {
         success: string;
         error: string;
         warning: string;
+        errorBackground: string;
         info: string;
       };
 
@@ -44,14 +45,14 @@ declare module "styled-components" {
       primary: string;
     };
     breakpoints: {
-      xs: "480px";
-      sm: "576px";
-      md: "768px";
-      lg: "992px";
-      xl: "1200px";
-      xxl: "1400px";
-      xxxl: "1920px";
-      uw: "2560px";
+      xs: string;
+      sm: string;
+      md: string;
+      lg: string;
+      xl: string;
+      xxl: string;
+      xxxl: string;
+      uw: string;
     };
   }
 }

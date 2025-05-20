@@ -148,19 +148,57 @@ export const FooterText = styled.p`
 `;
 
 export const ErrorMessage = styled.span`
-  color: red;
-  font-size: 0.8rem;
+  color: ${({ theme }) => theme.colors.feedback.error};
+  font-size: 0.85rem;
   margin-top: -0.5rem;
   margin-bottom: 0.5rem;
   display: block;
+  padding: 8px 12px;
+  background-color: ${({ theme }) => theme.colors.feedback.errorBackground};
+  border-radius: 4px;
+  border-left: 3px solid ${({ theme }) => theme.colors.feedback.error};
+  animation: fadeIn 0.3s ease-in-out;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+`;
+
+export const ServerErrorMessage = styled(ErrorMessage)`
+  width: 30%;
+  text-align: center;
+  margin-top: 1rem;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  &::before {
+    content: "⚠️";
+    font-size: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const Link = styled.a`
   color: ${({ theme }) => theme.colors.primary};
   text-decoration: none;
   font-weight: 500;
+  transition: color 0.2s ease;
 
   &:hover {
+    color: ${({ theme }) => theme.colors.primaryDark};
     text-decoration: underline;
   }
 `;

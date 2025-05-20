@@ -20,7 +20,7 @@ const TabPanel = ({
   return (
     <div hidden={value !== index}>
       {value === index && (
-        <Box p={2}>
+        <Box py={2}>
           <Typography component="div">{children}</Typography>
         </Box>
       )}
@@ -128,6 +128,7 @@ const RequestPage = () => {
                 photos={item.photos}
                 neighborhood={item.neighborhood}
                 createdAt={new Date(item.createdAt).toLocaleDateString("pt-BR")}
+                protocol={item.protocol}
                 secondary={true}
               />
             ))}

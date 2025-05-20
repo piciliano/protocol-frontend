@@ -24,7 +24,10 @@ export const ContainerTitleAndRequest = styled.div`
   margin: 0 auto;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
   margin-bottom: 3rem;
-  margin-top: 1rem;
+
+  @media (max-width: 768px) {
+    padding-top: 1rem;
+  }
 `;
 
 export const Title = styled.h2`

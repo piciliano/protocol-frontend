@@ -32,6 +32,7 @@ const theme = {
       error: "#E74C3C",
       warning: "#F1C40F",
       info: "#3498DB",
+      errorBackground: "#fce8e8",
     },
 
     disabled: "#A0C3E8",

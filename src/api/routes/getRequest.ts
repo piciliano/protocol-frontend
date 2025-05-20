@@ -35,12 +35,12 @@ export interface Request {
   city: string;
   state: string;
   zipcode: string;
-  protocol: string;
+  protocol?: string;
   userId?: string;
   photos: Photos[];
   createdAt: string;
   secondary?: boolean;
-  user: User;
+  user?: User;
 }
 
 export interface Photos {

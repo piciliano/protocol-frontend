@@ -130,12 +130,14 @@ const LoginPage = () => {
         </S.FormGroupCheckbox>
 
         <S.FormGroup>
-          <StyledButton type="submit" variant="primary" disabled={isPending}>
+          <StyledButton type="submit" $variant="primary" disabled={isPending}>
             {isPending ? "Carregando..." : "Entrar"}
           </StyledButton>
         </S.FormGroup>
 
-        {backendError && <S.ErrorMessage>{backendError}</S.ErrorMessage>}
+        {backendError && (
+          <S.ServerErrorMessage>{backendError}</S.ServerErrorMessage>
+        )}
 
         <S.FooterText>
           Não tem uma conta? <S.Link href="/register">Cadastre-se</S.Link> ou

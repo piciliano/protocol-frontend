@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { useGetRequests } from "../../api/routes/getRequest";
+import { Request, useGetRequests } from "../../api/routes/getRequest";
 import { useUpdateRequestStatus } from "../../api/routes/patchStatusForRequest";
 import * as S from "./styled";
 import {
@@ -14,23 +14,6 @@ import {
   Button,
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
-
-interface Request {
-  id?: string;
-  protocol: string;
-  status: string;
-  name: string;
-  description: string;
-  street: string;
-  neighborhood: string;
-  city: string;
-  state: string;
-  zipcode: string;
-  user: {
-    name: string;
-  };
-  createdAt: string;
-}
 
 const formatStatus = (status: string): string => {
   return status
@@ -91,7 +74,7 @@ const ModeratorPage = () => {
   const filteredData = useMemo(() => {
     if (!data) return [];
     return data.filter((item) => {
-      const matchesSearch = item.protocol
+      const matchesSearch = (item.protocol ?? "")
         .toString()
         .toLowerCase()
         .includes(search.toLowerCase());
@@ -157,10 +140,10 @@ const ModeratorPage = () => {
 
       <S.CardsContainer>
         {paginatedData.map((request) => (
-          <S.Card key={request.protocol}>
+          <S.Card key={request.protocol ?? request.id ?? Math.random()}>
             <S.CardHeader>
-              <S.Protocol>#{request.protocol}</S.Protocol>
-              <S.Status status={request.status}>
+              <S.Protocol>#{request.protocol ?? "Sem protocolo"}</S.Protocol>
+              <S.Status $status={request.status}>
                 {formatStatus(request.status)}
               </S.Status>
               <IconButton onClick={() => handleOpenModal(request)} size="small">
@@ -198,7 +181,7 @@ const ModeratorPage = () => {
             </S.CardBody>
 
             <S.CardFooter>
-              <S.Requester>Solicitado por: {request.user.name}</S.Requester>
+              <S.Requester>Solicitado por: {request.user?.name}</S.Requester>
               <S.Date>
                 Criado em:{" "}
                 {new Date(request.createdAt).toLocaleDateString("pt-BR")}
@@ -238,7 +221,7 @@ const ModeratorPage = () => {
           </Typography>
 
           <Typography id="modal-description" variant="body2" mb={2}>
-            Protocolo: <strong>#{editingRequest?.protocol}</strong>
+            Protocolo: <strong>#{editingRequest?.protocol ?? "N/A"}</strong>
           </Typography>
 
           <TextField
