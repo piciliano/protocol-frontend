@@ -1,6 +1,6 @@
 import * as S from "./styled";
 import InfoCard from "../../components/card";
-import IMAGE from "../../assets/obras.jpg";
+import IMAGE from "../../assets/mapa.jpg";
 import Info from "../../components/info";
 import About from "../../components/about";
 import GeocodeMap from "../../components/geocodeMap";

@@ -49,6 +49,24 @@ const GlobalStyles = createGlobalStyle`
   .swiper-button-prev {
     color: #FFFF; 
   }
+
+  .floating-icon {
+  color: inherit;
+  font-size: 28px;
+  transform: translate(-14px, -28px);
+  animation: floatUpDown 3s ease-in-out infinite;
+}
+
+@keyframes floatUpDown {
+  0%, 100% {
+    transform: translate(-14px, -28px) translateY(0);
+  }
+  50% {
+    transform: translate(-14px, -28px) translateY(-8px);
+  }
+}
+
+
 `;
 
 export default GlobalStyles;

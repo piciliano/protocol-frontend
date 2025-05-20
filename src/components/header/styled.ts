@@ -21,7 +21,7 @@ export const Logo = styled.img`
     transform: scale(1.05);
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     display: none;
   }
 `;

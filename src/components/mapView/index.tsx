@@ -27,13 +27,7 @@ const createCustomIcon = (status: keyof typeof statusColors) => {
   const color = statusColors[status] || statusColors.default;
 
   const iconHtml = renderToString(
-    <div
-      style={{
-        color: color,
-        fontSize: "24px",
-        transform: "translate(-12px, -24px)",
-      }}
-    >
+    <div className="floating-icon" style={{ color }}>
       <FaMapMarkerAlt />
     </div>
   );
@@ -41,8 +35,8 @@ const createCustomIcon = (status: keyof typeof statusColors) => {
   return L.divIcon({
     html: iconHtml,
     className: "",
-    iconSize: [24, 24],
-    iconAnchor: [12, 24],
+    iconSize: [28, 28],
+    iconAnchor: [14, 28],
   });
 };
 
