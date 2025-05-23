@@ -96,10 +96,14 @@ const ModeratorPage = () => {
 
   if (isLoading)
     return (
-      <S.Loading>
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        height="100vh"
+      >
         <CircularProgress />
-        <span style={{ marginLeft: 8 }}>Carregando solicitações...</span>
-      </S.Loading>
+      </Box>
     );
   if (isError) return <S.Error>Erro ao carregar solicitações</S.Error>;
 

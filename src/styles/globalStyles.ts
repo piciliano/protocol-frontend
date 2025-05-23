@@ -50,6 +50,19 @@ const GlobalStyles = createGlobalStyle`
     color: #FFFF; 
   }
 
+  
+  .swiper-pagination-bullet {
+  background:rgb(92, 90, 94); 
+  opacity: 1;
+}
+
+  .swiper-pagination-bullet-active {
+  background: #FFFF; 
+  opacity: 1;
+}
+
+
+
   .floating-icon {
   color: inherit;
   font-size: 28px;

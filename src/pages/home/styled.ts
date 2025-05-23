@@ -23,10 +23,11 @@ export const ContainerTitleAndRequest = styled.div`
   max-width: 1220px;
   margin: 0 auto;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 
   @media (max-width: 768px) {
     padding-top: 1rem;
+    margin-bottom: 0rem;
   }
 `;
 
@@ -58,5 +59,20 @@ export const ImageBanner = styled.img`
 
   @media (max-width: 576px) {
     display: none;
+  }
+`;
+
+export const ToggleButton = styled.button`
+  padding: 8px 16px;
+  margin-bottom: 1rem;
+  background-color: ${({ theme }) => theme.colors.primary || "#2c3e50"};
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  align-self: center;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.primaryDark || "#2c3e50"};
   }
 `;

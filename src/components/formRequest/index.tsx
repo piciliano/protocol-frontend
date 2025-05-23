@@ -194,19 +194,50 @@ const FormRequest = () => {
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            width: 400,
+            width: {
+              xs: "90%",
+              sm: 400,
+            },
             bgcolor: "background.paper",
             borderRadius: 2,
             boxShadow: 24,
-            p: 4,
+            p: {
+              xs: 2,
+              sm: 4,
+            },
             textAlign: "center",
           }}
         >
-          <CheckCircleOutline sx={{ fontSize: 60, color: "green" }} />
-          <Typography variant="h6" sx={{ mt: 2 }}>
+          <CheckCircleOutline
+            sx={{
+              fontSize: {
+                xs: 40,
+                sm: 60,
+              },
+              color: "green",
+            }}
+          />
+          <Typography
+            variant="h6"
+            sx={{
+              mt: {
+                xs: 1,
+                sm: 2,
+              },
+            }}
+          >
             Solicitação enviada com sucesso!
           </Typography>
-          <Typography variant="body1" sx={{ mt: 1 }}>
+          <Typography
+            variant="body1"
+            sx={{
+              mt: 1,
+              fontSize: {
+                xs: "0.9rem",
+                sm: "1rem",
+              },
+            }}
+          >
             Protocolo: <strong>{protocolNumber}</strong>
           </Typography>
         </Box>

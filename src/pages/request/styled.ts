@@ -9,11 +9,12 @@ export const RequestContainer = styled.div`
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
   border-radius: 12px;
   margin-top: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: 0rem;
     border-radius: 0;
     margin-top: 0;
+    margin-bottom: 0rem;
   }
 `;
