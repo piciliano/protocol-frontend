@@ -1,12 +1,14 @@
-# Protocol Frontend
+---
+
+## 📝Protocol Frontend
 
 Frontend desenvolvido em React para exibir solicitações recentes com informações geográficas, integrando mapas e cards informativos.
 
 ---
 
-## Tecnologias usadas
+## 📝Tecnologias usadas
 
-- React 19  
+- React 
 - TypeScript  
 - Vite (bundler e servidor de desenvolvimento)  
 - Material UI (componentes e estilos)  
@@ -45,48 +47,161 @@ Abra no navegador:
 ```bash
 http://localhost:5173
 ```
-Scripts disponíveis
-npm run dev: Inicia o servidor de desenvolvimento com hot reload
 
-npm run build: Compila o projeto para produção
+## Scripts disponíveis
 
-npm run preview: Preview do build de produção localmente
+- `npm run dev` - Inicia o servidor com hot reload
+- `npm run build` - Compila o projeto para produção
+- `npm run preview` - Preview do build de produção localmente
+- `npm run lint` - Executa o ESLint para análise de código
 
-npm run lint: Executa o ESLint para análise de código
+📝 Descrição do Projeto
+Este frontend exibe uma lista de solicitações recentes obtidas de uma API, apresentadas em cards com:
 
-Descrição do projeto
-Este frontend exibe uma lista de solicitações recentes obtidas de uma API, apresentadas em cards que mostram fotos, nome, descrição, localização e status. Também possui um mapa geocodificado que marca a localização das solicitações.
+- 📸 Fotos
+- 🏷 Nome
+- 📝 Descrição
+-📍 Localização
+- 🔖 Status
 
-Funcionalidades principais:
+## Estrutura do Projeto
 
-Listagem das solicitações mais recentes, com opção de mostrar todas ou apenas as 3 últimas
+```plaintext
+├── public
+│   ├── favicon.ico
+│   └── vite.svg
+├── src
+│   ├── api
+│   │   ├── apiConfig
+│   │   │   ├── apiClient.ts
+│   │   │   └── gemini.ts
+│   │   └── routes
+│   │       ├── auth.ts
+│   │       ├── forgotPassword.ts
+│   │       ├── getRequest.ts
+│   │       ├── getRequestByUserLogged.ts
+│   │       ├── patchStatusForRequest.ts
+│   │       ├── pathRoleByEmail.ts
+│   │       ├── postRequest.ts
+│   │       ├── register.ts
+│   │       ├── resetPassword.ts
+│   │       └── validateCode.ts
+│   ├── assets
+│   │   ├── acceptedremove.png
+│   │   ├── atalaiaaleatorio.jpg
+│   │   ├── atalaiahd-remove.png
+│   │   ├── atalaiahd.jpg
+│   │   ├── descreverremove.png
+│   │   ├── localizacaoremove.png
+│   │   ├── maosremovebg.png
+│   │   ├── mapa.jpg
+│   │   └── semarquivosemfundo.png
+│   ├── components
+│   │   ├── about
+│   │   │   ├── index.tsx
+│   │   │   └── styled.ts
+│   │   ├── button
+│   │   │   ├── index.tsx
+│   │   │   ├── styled.ts
+│   │   │   └── types.d.ts
+│   │   ├── card
+│   │   │   ├── index.tsx
+│   │   │   └── styled.ts
+│   │   ├── chat
+│   │   │   ├── index.tsx
+│   │   │   └── styled.ts
+│   │   ├── drawer
+│   │   │   ├── index.tsx
+│   │   │   └── styled.ts
+│   │   ├── expandedText
+│   │   │   └── index.tsx
+│   │   ├── footer
+│   │   │   ├── index.tsx
+│   │   │   └── styled.ts
+│   │   ├── formRequest
+│   │   │   ├── index.tsx
+│   │   │   └── styled.ts
+│   │   ├── geocodeMap
+│   │   │   ├── index.tsx
+│   │   │   └── styled.ts
+│   │   ├── header
+│   │   │   ├── index.tsx
+│   │   │   └── styled.ts
+│   │   ├── info
+│   │   │   ├── index.tsx
+│   │   │   └── styled.ts
+│   │   ├── input
+│   │   │   ├── index.tsx
+│   │   │   ├── styled.ts
+│   │   │   └── types.ts
+│   │   ├── layout
+│   │   │   └── index.tsx
+│   │   ├── loginMenu
+│   │   │   ├── index.tsx
+│   │   │   └── styled.ts
+│   │   ├── mapView
+│   │   │   └── index.tsx
+│   │   └── menu
+│   │       ├── index.tsx
+│   │       └── styled.ts
+│   ├── pages
+│   │   ├── home
+│   │   │   ├── index.tsx
+│   │   │   └── styled.ts
+│   │   ├── login
+│   │   │   ├── index.tsx
+│   │   │   └── styled.ts
+│   │   ├── moderator
+│   │   │   ├── index.tsx
+│   │   │   └── styled.ts
+│   │   ├── recovery
+│   │   │   ├── index.tsx
+│   │   │   └── styled.ts
+│   │   ├── register
+│   │   │   ├── index.tsx
+│   │   │   └── styled.ts
+│   │   └── request
+│   │       ├── index.tsx
+│   │       └── styled.ts
+│   ├── routes
+│   │   ├── protectRoute.tsx
+│   │   ├── publicRoute.tsx
+│   │   └── routes.tsx
+│   ├── schemas
+│   │   ├── login.ts
+│   │   └── register.ts
+│   ├── styles
+│   │   ├── globalStyles.ts
+│   │   └── theme.ts
+│   ├── App.tsx
+│   ├── main.tsx
+│   ├── styled.d.ts
+│   └── vite-env.d.ts
+├── .env
+├── .gitignore
+├── README.md
+├── eslint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts
+```
 
-Loading spinner enquanto os dados carregam
+### Descrição resumida das principais pastas e arquivos:
 
-Mensagem de erro se a API não responder
+- **public/**: Arquivos públicos estáticos, como ícones e imagens usadas no app.  
+- **src/api/**: Configurações da API e rotas para comunicação com o backend.  
+- **src/assets/**: Imagens e ícones usados na interface.  
+- **src/components/**: Componentes React reutilizáveis organizados por funcionalidade.  
+- **src/pages/**: Páginas da aplicação, organizadas por rotas.  
+- **src/routes/**: Definição das rotas públicas e protegidas da aplicação.  
+- **src/schemas/**: Esquemas de validação (ex: formulários de login e registro).  
+- **src/styles/**: Estilos globais e tema do projeto.  
+- **src/App.tsx**: Componente principal da aplicação.  
+- **src/main.tsx**: Ponto de entrada da aplicação React.  
 
-Mapa interativo que exibe as solicitações com base nos dados geográficos
-
-Seções adicionais de informações (Info e About)
-
-Estrutura básica
-src/pages/HomePage.tsx: página principal que orquestra o carregamento e exibição das solicitações
-
-src/components/InfoCard: componente de card para cada solicitação
-
-src/components/GeocodeMap: componente do mapa que recebe as solicitações para plotar
-
-src/api/routes/getRequest.ts: hook React Query para buscar solicitações da API
-
-src/assets: imagens estáticas usadas no projeto
-
-src/styled.ts: estilos via styled-components
-
-Requisitos
-Node.js 18+
-
-NPM 9+
-
-
-
+---
 
