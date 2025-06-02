@@ -1,54 +1,92 @@
-# React + TypeScript + Vite
+# Protocol Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend desenvolvido em React para exibir solicitações recentes com informações geográficas, integrando mapas e cards informativos.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tecnologias usadas
 
-## Expanding the ESLint configuration
+- React 19  
+- TypeScript  
+- Vite (bundler e servidor de desenvolvimento)  
+- Material UI (componentes e estilos)  
+- React Query (requisições e cache de dados)  
+- Styled Components (CSS-in-JS)  
+- React Leaflet + Leaflet (mapas)  
+- Axios (requisições HTTP)  
+- Zod (validação)  
+- Swiper (carrossel)  
+- JWT Decode, Crypto-js (segurança e autenticação)  
+- React Hook Form (formulários)  
+- React Router Dom (navegação)  
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Como rodar localmente
+
+1. Clone o repositório:
+
+```bash
+git clone https://github.com/piciliano/protocol-frontend
+cd protocol-frontend
 ```
+Instale as dependências:
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+npm install
 ```
+Inicie o servidor de desenvolvimento:
+
+```bash
+npm run dev
+```
+Abra no navegador:
+
+```bash
+http://localhost:5173
+```
+Scripts disponíveis
+npm run dev: Inicia o servidor de desenvolvimento com hot reload
+
+npm run build: Compila o projeto para produção
+
+npm run preview: Preview do build de produção localmente
+
+npm run lint: Executa o ESLint para análise de código
+
+Descrição do projeto
+Este frontend exibe uma lista de solicitações recentes obtidas de uma API, apresentadas em cards que mostram fotos, nome, descrição, localização e status. Também possui um mapa geocodificado que marca a localização das solicitações.
+
+Funcionalidades principais:
+
+Listagem das solicitações mais recentes, com opção de mostrar todas ou apenas as 3 últimas
+
+Loading spinner enquanto os dados carregam
+
+Mensagem de erro se a API não responder
+
+Mapa interativo que exibe as solicitações com base nos dados geográficos
+
+Seções adicionais de informações (Info e About)
+
+Estrutura básica
+src/pages/HomePage.tsx: página principal que orquestra o carregamento e exibição das solicitações
+
+src/components/InfoCard: componente de card para cada solicitação
+
+src/components/GeocodeMap: componente do mapa que recebe as solicitações para plotar
+
+src/api/routes/getRequest.ts: hook React Query para buscar solicitações da API
+
+src/assets: imagens estáticas usadas no projeto
+
+src/styled.ts: estilos via styled-components
+
+Requisitos
+Node.js 18+
+
+NPM 9+
+
+
+
+
