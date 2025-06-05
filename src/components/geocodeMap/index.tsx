@@ -31,9 +31,7 @@ const GeocodeMap = ({ services }: GeocodeMapProps) => {
         const fullAddress = `${service.address}, ${service.neighborhood}, Atalaia, Alagoas, Brasil`;
         try {
           const res = await fetch(
-            `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(
-              fullAddress
-            )}&format=json`
+            `http://localhost:3000/geocode?q=${encodeURIComponent(fullAddress)}`
           );
           const data = await res.json();
 
