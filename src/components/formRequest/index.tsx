@@ -20,6 +20,7 @@ const FormRequest = () => {
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [protocolNumber, setProtocolNumber] = useState<string | null>(null);
   const postRequestMutation = usePostRequestWithPhoto();
+  const [photoError, setPhotoError] = useState("");
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -41,8 +42,12 @@ const FormRequest = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    console.log("Dados sendo enviados:", formData);
+    if (formData.files.length === 0) {
+      setPhotoError("Por favor, anexe pelo menos uma foto.");
+      return;
+    }
 
+    setPhotoError("");
     postRequestMutation.mutate(
       { ...formData },
       {
@@ -162,6 +167,7 @@ const FormRequest = () => {
                     onChange={handleFileChange}
                   />
                 </S.FileUploadLabel>
+                {photoError && <S.ErrorMessage>{photoError}</S.ErrorMessage>}
 
                 {previews.length > 0 && (
                   <S.PreviewContainer>
