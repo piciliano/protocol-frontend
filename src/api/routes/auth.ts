@@ -7,7 +7,7 @@ type LoginData = {
 };
 
 type LoginResponseData = {
-  accessToken: string;
+  access_token: string;
 };
 
 export const loginUser = async (
@@ -26,8 +26,8 @@ export const useLogin = (): UseMutationResult<
   return useMutation({
     mutationFn: loginUser,
     onSuccess: (data) => {
-      if (data.accessToken) {
-        localStorage.setItem("tokenProtocolApp", data.accessToken);
+      if (data.access_token) {
+        localStorage.setItem("tokenProtocolApp", data.access_token);
       }
     },
     onError: (error) => {
