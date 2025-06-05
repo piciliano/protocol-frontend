@@ -170,3 +170,25 @@ export const SubmitButton = styled.button`
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 `;
+
+export const ErrorMessage = styled.p`
+  color: #ff3333;
+  font-style: italic;
+  font-size: 0.875rem;
+  margin-top: 8px;
+  padding: 4px 0;
+  animation: fadeIn 0.3s ease-in-out;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  text-align: center;
+`;
