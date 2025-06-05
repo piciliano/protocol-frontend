@@ -8,12 +8,13 @@ import {
   RequestStatusLabels,
   useGetRequests,
 } from "../../api/routes/getRequest";
-import { Zoom, CircularProgress, Box } from "@mui/material";
+import { Zoom, CircularProgress, Box, Pagination } from "@mui/material";
 import { useState } from "react";
 
 export const HomePage = () => {
   const { data: services, isLoading, isError } = useGetRequests();
-  const [showAll, setShowAll] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const cardsPerPage = 3;
 
   if (isLoading)
     return (
@@ -33,9 +34,13 @@ export const HomePage = () => {
     (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
   );
 
-  const displayedServices = showAll
-    ? sortedServices
-    : sortedServices.slice(0, 3);
+  const displayedServices = sortedServices.slice(0, 6);
+
+  const totalPages = Math.ceil(displayedServices.length / cardsPerPage);
+  const paginatedServices = displayedServices.slice(
+    (currentPage - 1) * cardsPerPage,
+    currentPage * cardsPerPage
+  );
 
   return (
     <S.HomeContainer>
@@ -44,7 +49,7 @@ export const HomePage = () => {
         <S.Title>Solicitações recentes</S.Title>
         <S.Divider />
         <S.RequestContainer>
-          {displayedServices.map((service) => (
+          {paginatedServices.map((service) => (
             <Zoom in={true} timeout={1000} key={service.id}>
               <div>
                 <InfoCard
@@ -65,9 +70,17 @@ export const HomePage = () => {
             </Zoom>
           ))}
         </S.RequestContainer>
-        <S.ToggleButton onClick={() => setShowAll((prev) => !prev)}>
-          {showAll ? "Ver menos" : "Ver todas"}
-        </S.ToggleButton>
+        {totalPages > 1 && (
+          <Box display="flex" justifyContent="center" mt={2}>
+            <Pagination
+              style={{ marginBottom: "1rem" }}
+              count={totalPages}
+              page={currentPage}
+              onChange={(_, value) => setCurrentPage(value)}
+              color="primary"
+            />
+          </Box>
+        )}
       </S.ContainerTitleAndRequest>
       <Info />
       <About />
