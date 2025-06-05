@@ -111,6 +111,9 @@ const Menu = ({
           setSnackbarSeverity("success");
           setSnackbarOpen(true);
           handleCloseModal();
+          setTimeout(() => {
+            handleClick();
+          }, 3000);
         },
         onError: () => {
           setSnackbarMsg("Erro ao atualizar a permissão!");
@@ -157,7 +160,11 @@ const Menu = ({
           )}
 
           {isModerator && (
-            <S.NavLinkItem $isDrawer={$isDrawer} to="/mod">
+            <S.NavLinkItem
+              $isDrawer={$isDrawer}
+              to="/mod"
+              onClick={handleClick}
+            >
               <FiArchive size={16} className="menu-icon" />
               <S.MenuText>Moderador</S.MenuText>
             </S.NavLinkItem>
@@ -165,6 +172,7 @@ const Menu = ({
 
           {isAdm && (
             <S.NavLinkItem
+              as={"button"}
               $isDrawer={$isDrawer}
               to="#"
               onClick={() => {
