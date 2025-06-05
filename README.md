@@ -1,54 +1,207 @@
-# React + TypeScript + Vite
+---
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📝Protocol Frontend
 
-Currently, two official plugins are available:
+Frontend desenvolvido em React para exibir solicitações recentes com informações geográficas, integrando mapas e cards informativos.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 📝Tecnologias usadas
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- React 
+- TypeScript  
+- Vite (bundler e servidor de desenvolvimento)  
+- Material UI (componentes e estilos)  
+- React Query (requisições e cache de dados)  
+- Styled Components (CSS-in-JS)  
+- React Leaflet + Leaflet (mapas)  
+- Axios (requisições HTTP)  
+- Zod (validação)  
+- Swiper (carrossel)  
+- JWT Decode, Crypto-js (segurança e autenticação)  
+- React Hook Form (formulários)  
+- React Router Dom (navegação)  
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+---
+
+## Como rodar localmente
+
+1. Clone o repositório:
+
+```bash
+git clone https://github.com/piciliano/protocol-frontend
+cd protocol-frontend
+```
+Instale as dependências:
+
+```bash
+npm install
+```
+Inicie o servidor de desenvolvimento:
+
+```bash
+npm run dev
+```
+Abra no navegador:
+
+```bash
+http://localhost:5173
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Scripts disponíveis
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- `npm run dev` - Inicia o servidor com hot reload
+- `npm run build` - Compila o projeto para produção
+- `npm run preview` - Preview do build de produção localmente
+- `npm run lint` - Executa o ESLint para análise de código
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+📝 Descrição do Projeto
+Este frontend exibe uma lista de solicitações recentes obtidas de uma API, apresentadas em cards com:
+
+- 📸 Fotos
+- 🏷 Nome
+- 📝 Descrição
+-📍 Localização
+- 🔖 Status
+
+## Estrutura do Projeto
+
+```plaintext
+├── public
+│   ├── favicon.ico
+│   └── vite.svg
+├── src
+│   ├── api
+│   │   ├── apiConfig
+│   │   │   ├── apiClient.ts
+│   │   │   └── gemini.ts
+│   │   └── routes
+│   │       ├── auth.ts
+│   │       ├── forgotPassword.ts
+│   │       ├── getRequest.ts
+│   │       ├── getRequestByUserLogged.ts
+│   │       ├── patchStatusForRequest.ts
+│   │       ├── pathRoleByEmail.ts
+│   │       ├── postRequest.ts
+│   │       ├── register.ts
+│   │       ├── resetPassword.ts
+│   │       └── validateCode.ts
+│   ├── assets
+│   │   ├── acceptedremove.png
+│   │   ├── atalaiaaleatorio.jpg
+│   │   ├── atalaiahd-remove.png
+│   │   ├── atalaiahd.jpg
+│   │   ├── descreverremove.png
+│   │   ├── localizacaoremove.png
+│   │   ├── maosremovebg.png
+│   │   ├── mapa.jpg
+│   │   └── semarquivosemfundo.png
+│   ├── components
+│   │   ├── about
+│   │   │   ├── index.tsx
+│   │   │   └── styled.ts
+│   │   ├── button
+│   │   │   ├── index.tsx
+│   │   │   ├── styled.ts
+│   │   │   └── types.d.ts
+│   │   ├── card
+│   │   │   ├── index.tsx
+│   │   │   └── styled.ts
+│   │   ├── chat
+│   │   │   ├── index.tsx
+│   │   │   └── styled.ts
+│   │   ├── drawer
+│   │   │   ├── index.tsx
+│   │   │   └── styled.ts
+│   │   ├── expandedText
+│   │   │   └── index.tsx
+│   │   ├── footer
+│   │   │   ├── index.tsx
+│   │   │   └── styled.ts
+│   │   ├── formRequest
+│   │   │   ├── index.tsx
+│   │   │   └── styled.ts
+│   │   ├── geocodeMap
+│   │   │   ├── index.tsx
+│   │   │   └── styled.ts
+│   │   ├── header
+│   │   │   ├── index.tsx
+│   │   │   └── styled.ts
+│   │   ├── info
+│   │   │   ├── index.tsx
+│   │   │   └── styled.ts
+│   │   ├── input
+│   │   │   ├── index.tsx
+│   │   │   ├── styled.ts
+│   │   │   └── types.ts
+│   │   ├── layout
+│   │   │   └── index.tsx
+│   │   ├── loginMenu
+│   │   │   ├── index.tsx
+│   │   │   └── styled.ts
+│   │   ├── mapView
+│   │   │   └── index.tsx
+│   │   └── menu
+│   │       ├── index.tsx
+│   │       └── styled.ts
+│   ├── pages
+│   │   ├── home
+│   │   │   ├── index.tsx
+│   │   │   └── styled.ts
+│   │   ├── login
+│   │   │   ├── index.tsx
+│   │   │   └── styled.ts
+│   │   ├── moderator
+│   │   │   ├── index.tsx
+│   │   │   └── styled.ts
+│   │   ├── recovery
+│   │   │   ├── index.tsx
+│   │   │   └── styled.ts
+│   │   ├── register
+│   │   │   ├── index.tsx
+│   │   │   └── styled.ts
+│   │   └── request
+│   │       ├── index.tsx
+│   │       └── styled.ts
+│   ├── routes
+│   │   ├── protectRoute.tsx
+│   │   ├── publicRoute.tsx
+│   │   └── routes.tsx
+│   ├── schemas
+│   │   ├── login.ts
+│   │   └── register.ts
+│   ├── styles
+│   │   ├── globalStyles.ts
+│   │   └── theme.ts
+│   ├── App.tsx
+│   ├── main.tsx
+│   ├── styled.d.ts
+│   └── vite-env.d.ts
+├── .env
+├── .gitignore
+├── README.md
+├── eslint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts
 ```
+
+### Descrição resumida das principais pastas e arquivos:
+
+- **public/**: Arquivos públicos estáticos, como ícones e imagens usadas no app.  
+- **src/api/**: Configurações da API e rotas para comunicação com o backend.  
+- **src/assets/**: Imagens e ícones usados na interface.  
+- **src/components/**: Componentes React reutilizáveis organizados por funcionalidade.  
+- **src/pages/**: Páginas da aplicação, organizadas por rotas.  
+- **src/routes/**: Definição das rotas públicas e protegidas da aplicação.  
+- **src/schemas/**: Esquemas de validação (ex: formulários de login e registro).  
+- **src/styles/**: Estilos globais e tema do projeto.  
+- **src/App.tsx**: Componente principal da aplicação.  
+- **src/main.tsx**: Ponto de entrada da aplicação React.  
+
+---
+
