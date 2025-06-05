@@ -113,6 +113,8 @@ const RequestPage = () => {
               gap: "2rem",
               alignItems: "center",
               justifyContent: "center",
+              paddingBottom: "1rem",
+              paddingTop: "0.5rem",
             }}
           >
             {data?.map((item) => (
