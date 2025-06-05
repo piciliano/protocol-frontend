@@ -111,7 +111,7 @@ const RequestPage = () => {
               display: "flex",
               flexWrap: "wrap",
               gap: "2rem",
-              alignItems: "center",
+              alignItems: "flex-start",
               justifyContent: "center",
               paddingBottom: "1rem",
               paddingTop: "0.5rem",
