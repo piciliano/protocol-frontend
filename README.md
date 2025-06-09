@@ -1,72 +1,82 @@
----
+# 🌍 Protocol Frontend
 
-## 📝Protocol Frontend
+[![Licença MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![React](https://img.shields.io/badge/react-19.0.0-blue)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/typescript-5.7.2-blue)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/vite-6.3.1-orange)](https://vitejs.dev/)
 
-Frontend desenvolvido em React para exibir solicitações recentes com informações geográficas, integrando mapas e cards informativos.
+Frontend desenvolvido em React para sistema de solicitações de serviços públicos, integrando visualização em mapas e cards informativos com geolocalização.
 
----
+![Dashboard](public/finalpng1.png) <!-- Substitua por screenshot real -->
 
-## 📝Tecnologias usadas
+## ✨ Funcionalidades
 
-- React 
-- TypeScript  
-- Vite (bundler e servidor de desenvolvimento)  
-- Material UI (componentes e estilos)  
-- React Query (requisições e cache de dados)  
-- Styled Components (CSS-in-JS)  
-- React Leaflet + Leaflet (mapas)  
-- Axios (requisições HTTP)  
-- Zod (validação)  
-- Swiper (carrossel)  
-- JWT Decode, Crypto-js (segurança e autenticação)  
-- React Hook Form (formulários)  
-- React Router Dom (navegação)  
+- 📋 Listagem de solicitações recentes com cards detalhados
+- 🗺 Visualização em mapa interativo (React Leaflet)
+- 📸 Galeria de fotos por solicitação (Swiper)
+- 🔐 Autenticação segura com JWT e Crypto-js
+- 📝 Formulários validados com Zod e React Hook Form
+- 🔄 Gerenciamento de estado com React Query
+- 🛡️ Rotas protegidas por níveis de acesso
 
----
+## 🛠️ Stack Tecnológica
 
-## Como rodar localmente
+### Core
+- React 19 + TypeScript
+- Vite (build tool)
+- Material UI (design system)
+- Styled Components (estilização)
 
-1. Clone o repositório:
+### Funcionalidades
+- React Leaflet + Leaflet (mapas)
+- Swiper (carrossel de imagens)
+- Axios (requisições HTTP)
+- React Query (gerenciamento de dados)
+
+### Segurança & Validação
+- JWT Decode + Crypto-js (autenticação)
+- Zod (validação de schemas)
+- React Hook Form (formulários)
+
+## 🚀 Como Executar Localmente
+
+### Pré-requisitos
+- Node.js 18+
+- npm 9+
+
+### Instalação
+
+## 🔐 Variáveis de Ambiente
+
+Crie um arquivo `.env` na raiz do projeto com as seguintes variáveis:
+
+```env
+# URL base da API backend
+VITE_API_URL=http://localhost:3000/example
+
+# Chave da API OpenCage Geocoder (para geolocalização)
+VITE_OPENCAGE_API_KEY=sua_chave_aqui
+
+```
+
+## 📦 Scripts Disponíveis
+
+| Comando         | Descrição                              |
+|-----------------|----------------------------------------|
+| `npm run dev`   | Inicia servidor de desenvolvimento com hot reload |
+| `npm run build` | Compila a aplicação para produção      |
+| `npm run preview` | Previsualiza o build de produção localmente |
+| `npm run lint`  | Executa ESLint para análise estática do código |
+
+
 
 ```bash
-git clone https://github.com/piciliano/protocol-frontend
+git clone https://github.com/piciliano/protocol-frontend.git
 cd protocol-frontend
-```
-Instale as dependências:
-
-```bash
 npm install
-```
-Inicie o servidor de desenvolvimento:
-
-```bash
-npm run dev
-```
-Abra no navegador:
-
-```bash
-http://localhost:5173
-```
-
-## Scripts disponíveis
-
-- `npm run dev` - Inicia o servidor com hot reload
-- `npm run build` - Compila o projeto para produção
-- `npm run preview` - Preview do build de produção localmente
-- `npm run lint` - Executa o ESLint para análise de código
-
-📝 Descrição do Projeto
-Este frontend exibe uma lista de solicitações recentes obtidas de uma API, apresentadas em cards com:
-
-- 📸 Fotos
-- 🏷 Nome
-- 📝 Descrição
--📍 Localização
-- 🔖 Status
 
 ## Estrutura do Projeto
 
-```plaintext
 ├── public
 │   ├── favicon.ico
 │   └── vite.svg
@@ -190,18 +200,62 @@ Este frontend exibe uma lista de solicitações recentes obtidas de uma API, apr
 └── vite.config.ts
 ```
 
-### Descrição resumida das principais pastas e arquivos:
+## 📁 Estrutura do Projeto - Visão Detalhada
 
-- **public/**: Arquivos públicos estáticos, como ícones e imagens usadas no app.  
-- **src/api/**: Configurações da API e rotas para comunicação com o backend.  
-- **src/assets/**: Imagens e ícones usados na interface.  
-- **src/components/**: Componentes React reutilizáveis organizados por funcionalidade.  
-- **src/pages/**: Páginas da aplicação, organizadas por rotas.  
-- **src/routes/**: Definição das rotas públicas e protegidas da aplicação.  
-- **src/schemas/**: Esquemas de validação (ex: formulários de login e registro).  
-- **src/styles/**: Estilos globais e tema do projeto.  
-- **src/App.tsx**: Componente principal da aplicação.  
-- **src/main.tsx**: Ponto de entrada da aplicação React.  
+### `public/` 📌
+**Arquivos estáticos públicos**  
+Ícones, imagens básicas e assets que não precisam de processamento
 
+### `src/` 🏗️
+**Código-fonte principal da aplicação**
+
+#### `api/` 🌐
+- `apiConfig/` - Configurações base da API (client HTTP, interceptores)
+- `routes/` - Definições específicas de endpoints (auth, solicitações, etc)
+
+#### `assets/` 🖼️  
+Imagens, ícones e recursos visuais usados na interface
+
+#### `components/` 🧩  
+**Componentes reutilizáveis** (organizados por funcionalidade):
+- `card/` - Componente de card de solicitação
+- `mapView/` - Visualização de mapas interativos
+- `formRequest/` - Formulários de solicitação
+- ...e outros componentes especializados
+
+#### `pages/` 📄  
+**Páginas principais da aplicação**:
+- `home/` - Página inicial
+- `login/` - Autenticação de usuários
+- `moderator/` - Painel do moderador
+- ...demais páginas por rota
+
+#### `routes/` 🛣️  
+Configuração do sistema de rotas:
+- Rotas públicas
+- Rotas protegidas por autenticação
+- Configuração principal de navegação
+
+#### `schemas/` 📋  
+Esquemas de validação com Zod:
+- Validação de formulários
+- Tipagem de dados da API
+
+#### `styles/` 🎨  
+- Estilos globais
+- Definição do tema (Material UI)
+- Tipagens para Styled Components
+
+### `Arquivos Raíz` 🏁
+| Arquivo          | Função                                                                 |
+|------------------|-----------------------------------------------------------------------|
+| `App.tsx`        | Componente raiz da aplicação                                          |
+| `main.tsx`       | Ponto de entrada (renderização React + providers globais)             |
+| `vite.config.ts` | Configuração do Vite (plugins, build optimization)                    |
 ---
 
+
+## 👤 Autor
+
+[![Neto](https://github.com/piciliano.png?size=100)](https://github.com/piciliano)  
+[Neto](https://github.com/piciliano)
