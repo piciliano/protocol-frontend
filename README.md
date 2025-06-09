@@ -1,6 +1,5 @@
 # 🌍 Protocol Frontend
 
-[![Licença MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![React](https://img.shields.io/badge/react-19.0.0-blue)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/typescript-5.7.2-blue)](https://www.typescriptlang.org/)
 [![Vite](https://img.shields.io/badge/vite-6.3.1-orange)](https://vitejs.dev/)
