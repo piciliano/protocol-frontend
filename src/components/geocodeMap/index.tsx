@@ -66,7 +66,13 @@ const GeocodeMap = ({ services }: GeocodeMapProps) => {
         const fullAddress = `${service.address}, ${service.neighborhood}, Atalaia, Alagoas, Brasil`;
 
         if (cache.current[fullAddress]) {
-          results.push(cache.current[fullAddress]);
+          const cached = cache.current[fullAddress];
+          const updated = {
+            ...cached,
+            status: service.status,
+            title: service.title,
+          };
+          results.push(updated);
           continue;
         }
 
