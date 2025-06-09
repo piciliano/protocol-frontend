@@ -54,8 +54,8 @@ Crie um arquivo `.env` na raiz do projeto com as seguintes variáveis:
 # URL base da API backend
 VITE_API_URL=http://localhost:3000/example
 
-# Chave da API OpenCage Geocoder (para geolocalização)
-VITE_OPENCAGE_API_KEY=sua_chave_aqui
+# Chave da API Gemini
+VITE_GEMINI_API_KEY=sua_chave_aqui
 
 ```
 
