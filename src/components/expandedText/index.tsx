@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Typography from "@mui/material/Typography";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { useTheme } from "@mui/material/styles";
 
 interface ExpandableTextProps {
   description: string;
@@ -13,7 +12,6 @@ export default function ExpandableText({
   secondary,
 }: ExpandableTextProps) {
   const [expanded, setExpanded] = useState(false);
-  const theme = useTheme();
   const isLargeScreen = useMediaQuery("(min-width:720px)");
 
   const words = description.split(" ");
